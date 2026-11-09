@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FLOATED</title>
+<meta name="description" content="FLOATED guides faded charts toward calmer water and brings every holder along. Live Solana market board.">
+<meta name="theme-color" content="{{THEME}}">
+<meta property="og:title" content="FLOATED">
+<meta property="og:description" content="Sinking is optional. A live Solana board and a calmer path for faded charts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://floated.fun/">
+<meta property="og:image" content="https://floated.fun/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,200..900&amp;family=Fragment+Mono&amp;display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.className = 'js';</script>
+</head>
+<body>
+<div id="progress" class="progress" aria-hidden="true"></div>
+<div id="live-msg" class="sr-only" role="status" aria-live="polite"></div>
+
+<header class="head">
+  <div class="head-in">
+    <div class="bar">
+      <a class="brand" href="#top" aria-label="FLOATED home"><img src="brand/floated-logo.png" alt="" width="28" height="28" draggable="false"><span>FLOATED</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="#board">Board</a>
+        <a href="#method">Method</a>
+        <a href="#ledger">Ledger</a>
+      </nav>
+      <div class="socials" data-socials>{{SOCIALS}}</div>
+    </div>
+    <div class="ca-wrap" data-ca-slot>{{CA}}</div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="beams" aria-hidden="true" data-depth="0.5"></div>
+    <canvas id="water" class="water" aria-hidden="true"></canvas>
+    <div class="hero-in">
+      <h1 class="display"><span class="sr-only">Sinking is optional.</span><span class="line" aria-hidden="true"><span class="clip"><span class="word">Sinking</span></span> <span class="clip"><span class="word">is</span></span> <span class="clip"><span class="word">optional.</span></span></span></h1>
+      <p class="lede reveal">FLOATED guides faded charts toward calmer water and brings every holder along for the climb.</p>
+      <div class="cta reveal">
+        <a class="btn btn-primary" href="#board"><span class="shine" aria-hidden="true"></span><span class="lbl">Watch the board</span></a>
+        <a class="btn btn-ghost" href="#method"><span class="lbl">Read the method</span></a>
+      </div>
+      <div class="status" id="status-pill" data-state="loading"><i class="dot" aria-hidden="true"></i><span id="status-text">Syncing</span></div>
+    </div>
+  </section>
+
+  <section class="marquee" aria-label="Live prices">
+    <div class="tk-track is-skel" id="ticker-track">
+      <div class="tk-set"><span class="tk sk-tk"></span><span class="tk sk-tk"></span><span class="tk sk-tk"></span><span class="tk sk-tk"></span><span class="tk sk-tk"></span><span class="tk sk-tk"></span><span class="tk sk-tk"></span><span class="tk sk-tk"></span></div>
+    </div>
+  </section>
+
+  <section class="wrap pulse" aria-label="Snapshot">
+    <div class="tiles">
+      <article class="tile-stat spot reveal"><span class="k">Network</span><span class="v">{{STAT_CHAIN}}</span></article>
+      <article class="tile-stat spot reveal"><span class="k">Contract</span><span class="v mono-s">{{STAT_CA}}</span></article>
+      <article class="tile-stat spot reveal"><span class="k">Rows on board</span><span class="v sk-c" id="stat-count"><span class="sk sk-c1"></span></span></article>
+      <article class="tile-stat spot reveal"><span class="k">Board turnover</span><span class="v sk-c" id="stat-vol"><span class="sk sk-c1"></span></span></article>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="board">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Solana · live</p>
+      <h2>Where the volume is flowing</h2>
+      <p class="sub">The busiest Solana tokens right now, ranked by 24 hour turnover and refreshed every minute while this tab stays open.</p>
+    </div>
+    <div class="panel reveal">
+      <div class="panel-top">
+        <div class="tabs" id="board-tabs" role="tablist" aria-label="Board order">
+          <button role="tab" aria-selected="true" data-sort="volume" type="button">Turnover</button>
+          <button role="tab" aria-selected="false" tabindex="-1" data-sort="movers" type="button">Movers</button>
+          <button role="tab" aria-selected="false" tabindex="-1" data-sort="depth" type="button">Depth</button>
+        </div>
+      </div>
+      <div class="thead" aria-hidden="true"><span>#</span><span>Token</span><span>Price</span><span>24h</span><span>Volume</span><span>Liquidity</span><span></span></div>
+      <ol class="rows" id="rows" aria-live="off"></ol>
+      <p class="board-error" id="board-error" role="status" hidden>The price feed is out of reach. Trying again with growing pauses.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="method">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Method</p>
+      <h2>Four moves, one current</h2>
+    </div>
+    <div class="panel steps reveal" id="steps">
+      <div class="step-tabs" role="tablist" aria-label="Method steps">
+        <button role="tab" id="s1" aria-selected="true" aria-controls="p1" type="button"><span class="n">1</span><span>Notice the leak</span></button>
+        <button role="tab" id="s2" aria-selected="false" aria-controls="p2" tabindex="-1" type="button"><span class="n">2</span><span>Rally the crowd</span></button>
+        <button role="tab" id="s3" aria-selected="false" aria-controls="p3" tabindex="-1" type="button"><span class="n">3</span><span>Pick deeper ground</span></button>
+        <button role="tab" id="s4" aria-selected="false" aria-controls="p4" tabindex="-1" type="button"><span class="n">4</span><span>Rise again</span></button>
+      </div>
+      <div class="meter"><span class="fill"></span></div>
+      <div class="step-body">
+        <div role="tabpanel" id="p1" aria-labelledby="s1"><h3>A slow bleed is a message</h3><p>A chart that keeps losing height is telling you something. Read it early, while the people who care are still in the room.</p></div>
+        <div role="tabpanel" id="p2" aria-labelledby="s2" hidden><h3>Holders come first</h3><p>Candles fade, communities remain. Each believer gets a clear path and a reason to stay close.</p></div>
+        <div role="tabpanel" id="p3" aria-labelledby="s3" hidden><h3>Thicker pools breathe easier</h3><p>Trades land softly when liquidity runs deep. Depth turns every sale from a shock into a ripple.</p></div>
+        <div role="tabpanel" id="p4" aria-labelledby="s4" hidden><h3>Momentum travels with you</h3><p>Story, people and energy keep moving together. A fresh start that feels like a continuation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="ledger">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Ledger</p>
+      <h2>Open ledger</h2>
+      <p class="sub">Each outside fact has exactly one entry. An entry without proof stays quiet until proof arrives.</p>
+    </div>
+    <div class="cards" data-records>
+{{RECORDS}}
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span class="brand-s"><img src="brand/floated-logo.png" alt="" width="22" height="22"> FLOATED</span>
+    <p>Prices come from public feeds and may be wrong. Nothing on this page is financial advice. Do your own research.</p>
+  </div>
+</footer>
+
+<script type="application/json" id="register">{{REGISTER}}</script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

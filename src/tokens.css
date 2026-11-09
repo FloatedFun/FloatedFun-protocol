@@ -1,0 +1,45 @@
+/* FLOATED design tokens. The ONLY file in the project that may contain colour literals.
+   Provenance: tools/palette.json. k-means (k=9, random_state=7) over opaque pixels of
+   brand/LOGO FLOATED PNG...png (2000x2000, IHDR colortype 6) and reference/SAMPUL FLOATED JPG.jpg.jpeg.
+   Every centroid was snapped to the nearest real pixel; (x,y) coordinates below are those pixels.
+   Motion numbers (easing, durations, spring constants) were measured from the reference site's CSS and JS. */
+:root {
+  /* banner (554,0) */        --c-abyss: #000618;
+  /* logo (972,578) */        --c-deep: #030d28;
+  /* logo (665,557) */        --c-hull: #061c44;
+  /* logo (696,1080) */       --c-hull-2: #0c2e63;
+  /* logo (978,1181) */       --c-line: #1a4a94;
+  /* logo (936,1106) */       --c-line-2: #2163c3;
+  /* logo (858,1451) */       --c-fog: #4f68a7;
+  /* logo (1093,1011) */      --c-float: #5095fc;
+  /* logo (854,903) */        --c-float-2: #75acfc;
+  /* logo (959,764) */        --c-mist: #9cc5fc;
+  /* banner (539,184) */      --c-ink: #c5defc;
+  /* banner (503,239) */      --c-foam: #ccf8ff;
+
+  --c-abyss-rgb: 0 6 24;
+  --c-deep-rgb: 3 13 40;
+  --c-hull-rgb: 6 28 68;
+  --c-line-rgb: 26 74 148;
+  --c-float-rgb: 80 149 252;
+  --c-float-2-rgb: 117 172 252;
+  --c-foam-rgb: 204 248 255;
+  --c-black-rgb: 0 0 0;
+
+  --color-mint: var(--c-foam);
+  --color-ink: var(--c-ink);
+  --color-mist: var(--c-mist);
+
+  /* measured: reference --ease-tide, --ease-in-out, durations, marquee, drift, pulse */
+  --ease-tide: cubic-bezier(.22, 1, .36, 1);
+  --ease-out: cubic-bezier(0, 0, .2, 1);
+  --ease-in-out: cubic-bezier(.4, 0, .2, 1);
+  --t-fast: .15s;
+  --t-btn: .3s;
+  --t-head: .5s;
+  --t-reveal: .9s;
+  --marquee-duration: 40s;
+
+  --font-sans: "Mona Sans", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-mono: "Fragment Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}

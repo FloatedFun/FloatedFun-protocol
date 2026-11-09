@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "note": "Every external fact is one record. state is stated, absent or unconfirmed. Only stated records may carry value or url. Dates live here as data and are never rendered.",
+  "records": {
+    "chain": {
+      "label": "Chain",
+      "state": "stated",
+      "value": "Solana",
+      "rpc": "https://solana-rpc.publicnode.com",
+      "source": "client statement",
+      "scope": "batch-level",
+      "recorded": "2026-11-09"
+    },
+    "ca": {
+      "label": "Contract",
+      "state": "absent",
+      "recorded": "2026-11-09"
+    },
+    "x": {
+      "label": "X",
+      "state": "absent",
+      "recorded": "2026-11-09"
+    },
+    "github": {
+      "label": "GitHub",
+      "state": "absent",
+      "recorded": "2026-11-09"
+    },
+    "market-source": {
+      "label": "Market feed",
+      "state": "stated",
+      "value": "DexScreener",
+      "boosts": "https://api.dexscreener.com/token-boosts/top/v1",
+      "pairs": "https://api.dexscreener.com/tokens/v1/solana/{addresses}",
+      "own": "https://api.dexscreener.com/latest/dex/tokens/{ca}",
+      "ownLogo": "https://frontend-api.pump.fun/coins/{ca}",
+      "source": "client statement",
+      "scope": "batch-level",
+      "recorded": "2026-11-09"
+    }
+  }
+}

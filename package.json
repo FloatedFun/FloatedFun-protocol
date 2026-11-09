@@ -1,0 +1,17 @@
+{
+  "name": "floated",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "FLOATED site. Static output in dist/.",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "gates": "node scripts/gates.mjs",
+    "measure": "node scripts/measure.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0",
+    "puppeteer-core": "^24.0.0"
+  }
+}
